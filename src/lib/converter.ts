@@ -49,7 +49,7 @@ export async function convert(file: File): Promise<File> {
   }
   console.debug("Found eduoffer attribute at", i);
   const view = new DataView(buffer);
-  view.setUint8(i + 12, 0); // Set the flag to 0
+  view.setUint8(i + 8, 0); // Set the flag to 0
   await archive.set("level.dat", new Blob([buffer]));
   const blob = archive.to_blob();
   return new File([blob], file.name.replace("MEE", "BE"), { type: file.type });
